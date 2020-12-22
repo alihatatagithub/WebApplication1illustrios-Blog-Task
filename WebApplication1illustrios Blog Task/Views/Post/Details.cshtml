@@ -1,0 +1,42 @@
+﻿@model WebApplication1illustrios_Blog_Task.Models.Post
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Post</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Blog.BlogName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Blog.BlogName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PostName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PostName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Like)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Like)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

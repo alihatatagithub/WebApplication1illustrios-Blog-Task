@@ -1,0 +1,43 @@
+﻿@model IEnumerable<WebApplication1illustrios_Blog_Task.Models.Post>
+<div>
+    <h4>ManageUser</h4>
+    <div class="panel panel-primary">
+        <div class="panel-heading"><h1>Likes </h1></div>
+        @foreach (var item in Model)
+        {
+
+
+
+
+            if (item.Like == true)
+            {
+
+                <div class="panel-body">
+                    <h1> @Html.DisplayFor(modelItem => item.PostName)</h1>
+                </div>
+
+            }
+        }
+
+    </div>
+    <div class="panel panel-danger">
+        <div class="panel-heading"><h1>Dislikes </h1></div>
+        @foreach (var item in Model)
+        {
+
+
+
+
+            if (item.Like == false)
+            {
+
+                <div class="panel-body">
+                    <h1> @Html.DisplayFor(modelItem => item.PostName)</h1>
+                </div>
+
+            }
+        }
+
+    </div>
+
+</div>

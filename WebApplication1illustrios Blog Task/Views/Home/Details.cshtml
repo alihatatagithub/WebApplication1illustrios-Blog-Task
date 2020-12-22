@@ -1,0 +1,89 @@
+﻿@model WebApplication1illustrios_Blog_Task.Models.Post
+
+@{
+    ViewBag.Title = "Details";
+    
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Post</h4>
+
+    <table class="table table-striped table-hover">
+        <tr>
+            <td> @Html.DisplayNameFor(model => model.Blog.BlogName)</td>
+            <td> @Html.DisplayNameFor(model => model.PostName)</td>
+        </tr>
+
+        <tr>
+            <td> @Html.DisplayFor(model => model.Blog.BlogName)</td>
+            <td> @Html.DisplayFor(model => model.PostName)</td>
+        </tr>
+    </table>
+
+
+
+    <button id="Like"  class="btn btn-primary">Like</button>
+
+   
+        <button id="DisLike" class="btn btn-danger">DisLike</button>
+    
+
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#Like").click(function () {
+                $.ajax({
+                    url: '/home/Like',
+                    method: 'POST',
+                    data: {
+                        id : @Model.Id
+                    },
+
+
+                    //dataType: 'json',
+                    success: function () {
+                        console.log("Success");
+                        window.location.href = "/home/LikeAction"
+
+                    },
+                    error: function () {
+                        console.log("error")
+                    }
+                })
+            })
+
+        },
+                $("#DisLike").click(function () {
+                $.ajax({
+                    url: '/home/DisLike',
+                    method: 'POST',
+                    data: {
+                        id : @Model.Id
+                    },
+
+
+                    //dataType: 'json',
+                    success: function () {
+                        console.log("Success");
+                        window.location.href = "/home/DisLikeAction"
+
+                    },
+                    error: function () {
+                        console.log("error")
+                    }
+                })
+            })
+
+        )
+    </script>
+
+    @using (Html.BeginForm("LikeAction", "Home", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+
+    }
+</div>
